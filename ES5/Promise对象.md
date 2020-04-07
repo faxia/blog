@@ -54,6 +54,4 @@ Promise实例生成后，可以用then犯法分别指定Resolved状态和Rejecte
 
  - Promise.reject(reason)方法会返回一个新的Promise实例，状态为Rejected。Promise.reject方法的参数reason会被传递给实例的回调函数
  
- ## Promise.done()
- 
-
+ 最后，Promise提供的API比较少，可以自己去实现一些Promise的方法，Promise.done()，Promise.finally()等
