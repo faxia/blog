@@ -33,8 +33,27 @@ Promise实例生成后，可以用then犯法分别指定Resolved状态和Rejecte
 ## Promise.all()
  - Promise.all()方法用于将多个Promise实例包装成新的Promise实例
  - p1，p2，p3都是Promise实例，若不是Promise实例，会调用Promise.resolve方法，将参数转为Promise实例，再进一步处理
- - p的状态由p1、p2、p3决定。只有三个的状态都变为Fullfilled，P的状态才会变为Fullfilled，此时p1、p2、p3的返回值会传递给p的回调函数。若其中一个状态变为Rejected，p的状态则变为Rejected，第一个被Rejected实例的返回值会传递给p的回调函数
+ - **p的状态由p1、p2、p3决定。只有三个的状态都变为Fullfilled，P的状态才会变为Fullfilled**，此时p1、p2、p3的返回值会传递给p的回调函数。**若其中一个状态变为Rejected，p的状态则变为Rejected，第一个被Rejected实例的返回值会传递给p的回调函数**
   ```
  var p = Promise.all([p1,p2,p3]);
  
  ```
+  ## Promise.race()
+ 
+ - Promise.race()方法也是将多个Promise实例包装成新的Promise实例
+ - **只要p1、p2、p3中有一个实例率先改变状态**，p的状态就会跟着改变，那个率先改变的Promise实例的返回值，就传给p的回调函数
+ - Promise.race()方法和Promise.all()方法一样，如果不是Promise实例，就会调用Promise.resolve()方法，将参数转为Promise实例，再做进一步的处理
+ 
+ ## Promise.resolve()
+ 
+ - 将现有对象转为Promise对象
+ - 如果Promise.resolve方法的参数不是具有then方法的对象，则返回一个新的Promise对象，且状态为Resolved
+ - Promise.resolve方法允许调用时不带参数，故希望得到一个Promise对象，比较方便的方法就是直接调用Promise.resoleve方法
+
+## Promise.reject()
+
+ - Promise.reject(reason)方法会返回一个新的Promise实例，状态为Rejected。Promise.reject方法的参数reason会被传递给实例的回调函数
+ 
+ ## Promise.done()
+ 
+
